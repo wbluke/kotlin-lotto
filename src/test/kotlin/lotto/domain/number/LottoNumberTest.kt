@@ -9,7 +9,7 @@ internal class LottoNumberTest {
 
     @DisplayName("로또 숫자는 0 이상의 정수다.")
     @Test
-    fun create() {
+    internal fun create() {
         // given
         val number = 0
 
@@ -24,7 +24,7 @@ internal class LottoNumberTest {
 
     @DisplayName("로또 숫자는 45 이하의 정수다.")
     @Test
-    fun create2() {
+    internal fun create2() {
         // given
         val number = 46
 
