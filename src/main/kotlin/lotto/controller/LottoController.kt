@@ -1,9 +1,15 @@
 package lotto.controller
 
-class LottoController {
+import lotto.domain.money.LottoPurchasedMoney
+import lotto.view.InputView
+
+class LottoController(
+    private val inputView: InputView
+) {
 
     fun run() {
-        println("run!")
+        val money = inputView.inputMoneyToPurchaseLotto()
+        val purchasedMoney = LottoPurchasedMoney(money)
     }
 
 }

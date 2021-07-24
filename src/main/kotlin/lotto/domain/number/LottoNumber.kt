@@ -1,6 +1,8 @@
 package lotto.domain.number
 
-data class LottoNumber(val number: Int) {
+data class LottoNumber(
+    private val number: Int
+) {
 
     companion object {
         const val MIN_NUMBER = 1

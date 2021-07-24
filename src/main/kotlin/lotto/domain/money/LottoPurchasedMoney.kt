@@ -1,6 +1,8 @@
 package lotto.domain.money
 
-data class LottoPurchasedMoney(val money: Long) {
+data class LottoPurchasedMoney(
+    private val money: Long
+) {
 
     companion object {
         const val MIN_VALUE = 0L
