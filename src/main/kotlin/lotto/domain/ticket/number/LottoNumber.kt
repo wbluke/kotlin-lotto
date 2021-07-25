@@ -1,4 +1,4 @@
-package lotto.domain.number
+package lotto.domain.ticket.number
 
 data class LottoNumber(
     private val number: Int

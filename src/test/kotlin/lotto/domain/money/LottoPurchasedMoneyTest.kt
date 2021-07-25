@@ -8,7 +8,7 @@ internal class LottoPurchasedMoneyTest {
 
     @DisplayName("로또 구입 금액은 0원 이상이다.")
     @Test
-    internal fun create() {
+    fun create() {
         // given
         val money = 0L
 
