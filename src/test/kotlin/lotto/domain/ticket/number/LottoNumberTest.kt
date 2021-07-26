@@ -15,7 +15,6 @@ internal class LottoNumberTest {
 
         // when // then
         assertFailsWith<IllegalArgumentException>(
-            message = "No exception found",
             block = {
                 LottoNumber(number)
             }
@@ -30,7 +29,6 @@ internal class LottoNumberTest {
 
         // when // then
         assertFailsWith<IllegalArgumentException>(
-            message = "No exception found",
             block = {
                 LottoNumber(number)
             }

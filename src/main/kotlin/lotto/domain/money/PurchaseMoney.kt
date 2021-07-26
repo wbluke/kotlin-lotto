@@ -1,6 +1,6 @@
 package lotto.domain.money
 
-data class LottoPurchasedMoney(
+data class PurchaseMoney(
     private val money: Long
 ) {
 
@@ -12,6 +12,10 @@ data class LottoPurchasedMoney(
         if (money <= MIN_VALUE) {
             throw IllegalArgumentException("금액은 ${MIN_VALUE}원 이상이어야 합니다.")
         }
+    }
+
+    fun calculateCountYouCanBuy(baseMoney: Long): Long {
+        return money / baseMoney
     }
 
 }

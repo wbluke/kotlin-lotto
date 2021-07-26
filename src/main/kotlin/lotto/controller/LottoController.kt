@@ -1,6 +1,8 @@
 package lotto.controller
 
-import lotto.domain.money.LottoPurchasedMoney
+import lotto.domain.money.PurchaseMoney
+import lotto.domain.ticket.machine.LottoTicketMachine
+import lotto.domain.ticket.machine.RandomLottoTicketMachine
 import lotto.view.InputView
 
 class LottoController(
@@ -9,7 +11,10 @@ class LottoController(
 
     fun run() {
         val money = inputView.inputMoneyToPurchaseLotto()
-        val purchasedMoney = LottoPurchasedMoney(money)
+        val purchasedMoney = PurchaseMoney(money)
+
+        val lottoTicketMachine: LottoTicketMachine = RandomLottoTicketMachine()
+        val purchasedTickets = lottoTicketMachine.buy(purchasedMoney)
     }
 
 }
