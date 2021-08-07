@@ -14,7 +14,7 @@ data class PurchaseMoney(
         }
     }
 
-    fun calculateCountYouCanBuy(baseMoney: Long): Long {
+    fun calculateCountToBuy(baseMoney: Long): Long {
         return money / baseMoney
     }
 

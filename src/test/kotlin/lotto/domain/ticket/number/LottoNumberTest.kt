@@ -16,7 +16,7 @@ internal class LottoNumberTest {
         // when // then
         assertFailsWith<IllegalArgumentException>(
             block = {
-                LottoNumber(number)
+                LottoNumber.of(number)
             }
         )
     }
@@ -30,7 +30,7 @@ internal class LottoNumberTest {
         // when // then
         assertFailsWith<IllegalArgumentException>(
             block = {
-                LottoNumber(number)
+                LottoNumber.of(number)
             }
         )
     }
@@ -39,8 +39,8 @@ internal class LottoNumberTest {
     @Test
     fun equalsAndHashCode() {
         // given
-        val lottoNumber1 = LottoNumber(1)
-        val lottoNumber2 = LottoNumber(1)
+        val lottoNumber1 = LottoNumber.of(1)
+        val lottoNumber2 = LottoNumber.of(1)
 
         // when // then
         assertEquals(lottoNumber1, lottoNumber2)

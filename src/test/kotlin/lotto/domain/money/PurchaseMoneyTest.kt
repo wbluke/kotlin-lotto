@@ -31,7 +31,7 @@ internal class PurchaseMoneyTest {
         val purchaseMoney = PurchaseMoney(money)
 
         // when
-        val result = purchaseMoney.calculateCountYouCanBuy(baseMoney)
+        val result = purchaseMoney.calculateCountToBuy(baseMoney)
 
         // then
         assertEquals(result, 14)

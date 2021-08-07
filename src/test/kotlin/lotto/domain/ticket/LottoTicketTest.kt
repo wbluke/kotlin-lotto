@@ -11,11 +11,11 @@ internal class LottoTicketTest {
     @Test
     fun create1() {
         // given
-        val lottoNumber1 = LottoNumber(1)
-        val lottoNumber2 = LottoNumber(2)
-        val lottoNumber3 = LottoNumber(3)
-        val lottoNumber4 = LottoNumber(4)
-        val lottoNumber5 = LottoNumber(5)
+        val lottoNumber1 = LottoNumber.of(1)
+        val lottoNumber2 = LottoNumber.of(2)
+        val lottoNumber3 = LottoNumber.of(3)
+        val lottoNumber4 = LottoNumber.of(4)
+        val lottoNumber5 = LottoNumber.of(5)
 
         val lottoNumbers = listOf(lottoNumber1, lottoNumber2, lottoNumber3, lottoNumber4, lottoNumber5)
 
@@ -31,12 +31,12 @@ internal class LottoTicketTest {
     @Test
     fun create2() {
         // given
-        val lottoNumber1 = LottoNumber(1)
-        val lottoNumber2 = LottoNumber(1)
-        val lottoNumber3 = LottoNumber(3)
-        val lottoNumber4 = LottoNumber(4)
-        val lottoNumber5 = LottoNumber(5)
-        val lottoNumber6 = LottoNumber(6)
+        val lottoNumber1 = LottoNumber.of(1)
+        val lottoNumber2 = LottoNumber.of(1)
+        val lottoNumber3 = LottoNumber.of(3)
+        val lottoNumber4 = LottoNumber.of(4)
+        val lottoNumber5 = LottoNumber.of(5)
+        val lottoNumber6 = LottoNumber.of(6)
 
         val lottoNumbers = listOf(lottoNumber1, lottoNumber2, lottoNumber3, lottoNumber4, lottoNumber5, lottoNumber6)
 

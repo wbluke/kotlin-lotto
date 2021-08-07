@@ -1,12 +1,20 @@
 package lotto.domain.ticket.number
 
-data class LottoNumber(
+data class LottoNumber private constructor(
     private val number: Int
 ) {
 
     companion object {
-        const val MIN_NUMBER = 1
-        const val MAX_NUMBER = 45
+        private const val MIN_NUMBER = 1
+        private const val MAX_NUMBER = 45
+
+        private val lottoNumberCache: MutableMap<Int, LottoNumber> = mutableMapOf()
+
+        fun of(number: Int): LottoNumber {
+            return lottoNumberCache.computeIfAbsent(number) {
+                LottoNumber(it)
+            }
+        }
     }
 
     init {
