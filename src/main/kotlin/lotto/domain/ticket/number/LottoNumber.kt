@@ -8,18 +8,15 @@ data class LottoNumber private constructor(
         private const val MIN_NUMBER = 1
         private const val MAX_NUMBER = 45
 
-        private val lottoNumberCache: MutableMap<Int, LottoNumber> = mutableMapOf()
+        val cache: Map<Int, LottoNumber> = createCache()
+
+        private fun createCache(): Map<Int, LottoNumber> {
+            return (MIN_NUMBER..MAX_NUMBER).map { it }.associateWith { LottoNumber(it) }
+        }
 
         fun of(number: Int): LottoNumber {
-            return lottoNumberCache.computeIfAbsent(number) {
-                LottoNumber(it)
-            }
-        }
-    }
-
-    init {
-        if (number < MIN_NUMBER || number > MAX_NUMBER) {
-            throw IllegalArgumentException("로또 숫자는 ${MIN_NUMBER}에서 $MAX_NUMBER 사이 숫자입니다.")
+            return cache[number]
+                ?: throw IllegalArgumentException("로또 숫자는 ${MIN_NUMBER}에서 $MAX_NUMBER 사이 숫자입니다.")
         }
     }
 

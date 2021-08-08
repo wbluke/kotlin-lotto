@@ -1,7 +1,11 @@
 package lotto.domain.ticket
 
 class LottoTickets(
-    private val tickets: List<LottoTicket>
+    val tickets: List<LottoTicket>
 ) {
+
+    fun size(): Int {
+        return tickets.size
+    }
 
 }
