@@ -1,7 +1,7 @@
 package lotto.domain.ticket.number
 
 data class LottoNumber private constructor(
-    private val number: Int
+    val number: Int
 ) {
 
     companion object {

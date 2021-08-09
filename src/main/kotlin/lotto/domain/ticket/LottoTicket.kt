@@ -4,15 +4,18 @@ import lotto.domain.ticket.number.LottoNumber
 import java.util.stream.Collectors
 
 class LottoTicket(
-    numbers: List<LottoNumber>
+    _numbers: List<LottoNumber>
 ) {
+
+    val numbers: List<LottoNumber>
 
     companion object {
         const val SIZE_OF_NUMBERS = 6
     }
 
     init {
-        validateNumbers(numbers)
+        validateNumbers(_numbers)
+        numbers = _numbers.sortedBy { it.number }
     }
 
     private fun validateNumbers(numbers: List<LottoNumber>) {

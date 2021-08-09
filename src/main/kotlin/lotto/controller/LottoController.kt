@@ -1,21 +1,22 @@
 package lotto.controller
 
-import lotto.domain.money.PurchaseMoney
-import lotto.domain.ticket.LottoTickets
-import lotto.domain.ticket.machine.LottoTicketMachine
-import lotto.domain.ticket.machine.RandomLottoTicketMachine
+import lotto.service.LottoService
+import lotto.service.dto.LottoTicketsResponseDto
 import lotto.view.InputView
+import lotto.view.OutputView
 
 class LottoController(
-    private val inputView: InputView
+    private val inputView: InputView,
+    private val outputView: OutputView
 ) {
+
+    private val lottoService: LottoService = LottoService()
 
     fun run() {
         val money = inputView.inputMoneyToPurchaseLotto()
-        val purchasedMoney = PurchaseMoney(money)
 
-        val lottoTicketMachine: LottoTicketMachine = RandomLottoTicketMachine()
-        val purchasedTickets: LottoTickets = lottoTicketMachine.buy(purchasedMoney)
+        val lottoTicketsResponseDto: LottoTicketsResponseDto = lottoService.buyTickets(money)
+        outputView.printLottoTickets(lottoTicketsResponseDto)
     }
 
 }
