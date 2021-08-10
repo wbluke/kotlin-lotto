@@ -5,7 +5,12 @@ import lotto.service.dto.LottoTicketsResponseDto
 
 class ConsoleOutputView : OutputView {
 
+    override fun printEmptyLine() {
+        println()
+    }
+
     override fun printLottoTickets(lottoTicketsResponseDto: LottoTicketsResponseDto) {
+        println("${lottoTicketsResponseDto.size()}개를 구매했습니다.")
         for (lottoTicketResponseDto in lottoTicketsResponseDto.lottoTickets) {
             printLottoTicket(lottoTicketResponseDto)
         }

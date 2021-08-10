@@ -1,0 +1,17 @@
+package lotto.repository
+
+import lotto.domain.ticket.LottoTicket
+
+class LottoTicketMemoryRepository : LottoTicketRepository {
+
+    private val lottoTickets: MutableList<LottoTicket> = mutableListOf()
+
+    override fun save(ticket: LottoTicket) {
+        lottoTickets.add(ticket)
+    }
+
+    override fun saveAll(tickets: List<LottoTicket>) {
+        lottoTickets.addAll(tickets)
+    }
+
+}

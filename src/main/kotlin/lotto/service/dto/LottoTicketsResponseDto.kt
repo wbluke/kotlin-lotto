@@ -9,4 +9,8 @@ class LottoTicketsResponseDto constructor(lottoTicket: LottoTickets) {
         .map { LottoTicketResponseDto(it) }
         .collect(Collectors.toList())
 
+    fun size(): Int {
+        return lottoTickets.size
+    }
+
 }

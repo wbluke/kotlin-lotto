@@ -17,6 +17,7 @@ class LottoController(
 
         val lottoTicketsResponseDto: LottoTicketsResponseDto = lottoService.buyTickets(money)
         outputView.printLottoTickets(lottoTicketsResponseDto)
+        outputView.printEmptyLine()
     }
 
 }
