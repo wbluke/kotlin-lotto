@@ -72,4 +72,28 @@ internal class LottoTicketTest {
         )
     }
 
+    @DisplayName("로또 숫자가 티켓에 포함되어있는지를 확인한다.")
+    @Test
+    fun contains() {
+        // given
+        val lottoNumber1 = LottoNumber.of(1)
+        val lottoNumber2 = LottoNumber.of(2)
+        val lottoNumber3 = LottoNumber.of(3)
+        val lottoNumber4 = LottoNumber.of(4)
+        val lottoNumber5 = LottoNumber.of(5)
+        val lottoNumber6 = LottoNumber.of(6)
+        val lottoNumber7 = LottoNumber.of(7)
+
+        val lottoNumbers = listOf(lottoNumber1, lottoNumber2, lottoNumber3, lottoNumber4, lottoNumber5, lottoNumber6)
+        val lottoTicket = LottoTicket(lottoNumbers)
+
+        // when
+        val result1 = lottoTicket.contains(lottoNumber1)
+        val result2 = lottoTicket.contains(lottoNumber7)
+
+        // then
+        assertEquals(result1, true)
+        assertEquals(result2, false)
+    }
+
 }

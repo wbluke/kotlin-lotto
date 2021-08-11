@@ -11,11 +11,23 @@ class LottoTicket(
 
     companion object {
         const val SIZE_OF_NUMBERS = 6
+
+        fun ofInt(numbers: List<Int>): LottoTicket {
+            val lottoNumbers = numbers.stream()
+                .map { LottoNumber.of(it) }
+                .collect(Collectors.toList())
+
+            return LottoTicket(lottoNumbers)
+        }
     }
 
     init {
         validateNumbers(_numbers)
         numbers = _numbers.sortedBy { it.number }
+    }
+
+    fun contains(bonusBall: LottoNumber): Boolean {
+        return numbers.contains(bonusBall)
     }
 
     private fun validateNumbers(numbers: List<LottoNumber>) {

@@ -1,11 +1,15 @@
 package lotto.service
 
 import lotto.domain.money.PurchaseMoney
+import lotto.domain.ticket.LottoTicket
 import lotto.domain.ticket.LottoTickets
 import lotto.domain.ticket.machine.LottoTicketMachine
 import lotto.domain.ticket.machine.RandomLottoTicketMachine
+import lotto.domain.ticket.number.LottoNumber
+import lotto.domain.ticket.winning.WinningLotto
 import lotto.repository.LottoTicketMemoryRepository
 import lotto.repository.LottoTicketRepository
+import lotto.service.dto.LottoMatchingResultResponseDto
 import lotto.service.dto.LottoTicketsResponseDto
 
 class LottoService {
@@ -21,6 +25,15 @@ class LottoService {
         lottoTicketRepository.saveAll(purchasedTickets.tickets)
 
         return LottoTicketsResponseDto(purchasedTickets)
+    }
+
+    fun matchWithWinningLotto(winningNumbers: List<Int>, bonusBall: Int): LottoMatchingResultResponseDto {
+        val winningLottoTicket = LottoTicket.ofInt(winningNumbers)
+        val winningBonusBall = LottoNumber.of(bonusBall)
+
+        val winningLotto = WinningLotto(winningLottoTicket, winningBonusBall)
+
+        return LottoMatchingResultResponseDto();
     }
 
 }
