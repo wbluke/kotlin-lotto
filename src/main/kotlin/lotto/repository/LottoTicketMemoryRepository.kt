@@ -14,4 +14,8 @@ class LottoTicketMemoryRepository : LottoTicketRepository {
         lottoTickets.addAll(tickets)
     }
 
+    override fun findAll(): List<LottoTicket> {
+        return lottoTickets
+    }
+
 }

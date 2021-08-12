@@ -8,4 +8,6 @@ interface LottoTicketRepository {
 
     fun saveAll(tickets: List<LottoTicket>)
 
+    fun findAll(): List<LottoTicket>
+
 }

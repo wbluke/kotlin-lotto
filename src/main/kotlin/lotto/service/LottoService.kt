@@ -5,6 +5,7 @@ import lotto.domain.ticket.LottoTicket
 import lotto.domain.ticket.LottoTickets
 import lotto.domain.ticket.machine.LottoTicketMachine
 import lotto.domain.ticket.machine.RandomLottoTicketMachine
+import lotto.domain.ticket.matching.MatchingResult
 import lotto.domain.ticket.number.LottoNumber
 import lotto.domain.ticket.winning.WinningLotto
 import lotto.repository.LottoTicketMemoryRepository
@@ -32,6 +33,8 @@ class LottoService {
         val winningBonusBall = LottoNumber.of(bonusBall)
 
         val winningLotto = WinningLotto(winningLottoTicket, winningBonusBall)
+        val purchasedTickets = LottoTickets(lottoTicketRepository.findAll())
+        val matchingResult = MatchingResult.of(winningLotto, purchasedTickets)
 
         return LottoMatchingResultResponseDto();
     }
