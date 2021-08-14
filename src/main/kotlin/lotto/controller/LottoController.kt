@@ -1,7 +1,7 @@
 package lotto.controller
 
+import lotto.repository.LottoTicketMemoryRepository
 import lotto.service.LottoService
-import lotto.service.dto.LottoMatchingResultResponseDto
 import lotto.service.dto.LottoTicketsResponseDto
 import lotto.view.InputView
 import lotto.view.OutputView
@@ -11,7 +11,7 @@ class LottoController(
     private val outputView: OutputView
 ) {
 
-    private val lottoService: LottoService = LottoService()
+    private val lottoService: LottoService = LottoService(LottoTicketMemoryRepository())
 
     fun run() {
         val money = inputView.inputMoneyToPurchaseLotto()
@@ -22,7 +22,8 @@ class LottoController(
 
         val winningNumbers = inputView.inputWinningNumbers()
         val bonusBall = inputView.inputBonusBall()
-        val lottoMatchingResultResponseDto: LottoMatchingResultResponseDto = lottoService.matchWithWinningLotto(winningNumbers, bonusBall)
+        val lottoMatchingResultResponseDto = lottoService.matchWithWinningLotto(winningNumbers, bonusBall)
+        outputView.printMatchingResult(lottoMatchingResultResponseDto)
     }
 
 }

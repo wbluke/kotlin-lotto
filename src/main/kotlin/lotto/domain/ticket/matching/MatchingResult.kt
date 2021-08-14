@@ -21,15 +21,17 @@ class MatchingResult private constructor() {
                 matchingResult.plusCountBy(lottoRank)
             }
 
-            return matchingResult;
+            return matchingResult
         }
 
+    }
+
+    fun getCountOf(lottoRank: LottoRank): Int {
+        return result[lottoRank] ?: return 0
     }
 
     private fun plusCountBy(lottoRank: LottoRank) {
         result.merge(lottoRank, 1) { a: Int?, b: Int? -> a!! + b!! }
     }
-
-    // TODO: 2021/08/12 test
 
 }

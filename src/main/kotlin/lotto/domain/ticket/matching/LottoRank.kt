@@ -22,6 +22,16 @@ enum class LottoRank(val matchingCount: Int, val prize: Long) {
 
     }
 
-    // TODO: 2021/08/12 test
+    fun isSecond(): Boolean {
+        return this == SECOND
+    }
+
+    fun isNone(): Boolean {
+        return this == NONE
+    }
+
+    fun isNotNone(): Boolean {
+        return !isNone()
+    }
 
 }

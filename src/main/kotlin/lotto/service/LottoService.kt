@@ -8,14 +8,11 @@ import lotto.domain.ticket.machine.RandomLottoTicketMachine
 import lotto.domain.ticket.matching.MatchingResult
 import lotto.domain.ticket.number.LottoNumber
 import lotto.domain.ticket.winning.WinningLotto
-import lotto.repository.LottoTicketMemoryRepository
 import lotto.repository.LottoTicketRepository
 import lotto.service.dto.LottoMatchingResultResponseDto
 import lotto.service.dto.LottoTicketsResponseDto
 
-class LottoService {
-
-    private val lottoTicketRepository: LottoTicketRepository = LottoTicketMemoryRepository()
+class LottoService(private val lottoTicketRepository: LottoTicketRepository) {
 
     fun buyTickets(money: Long): LottoTicketsResponseDto {
         val purchasedMoney = PurchaseMoney(money)
@@ -36,7 +33,7 @@ class LottoService {
         val purchasedTickets = LottoTickets(lottoTicketRepository.findAll())
         val matchingResult = MatchingResult.of(winningLotto, purchasedTickets)
 
-        return LottoMatchingResultResponseDto();
+        return LottoMatchingResultResponseDto(matchingResult);
     }
 
 }
