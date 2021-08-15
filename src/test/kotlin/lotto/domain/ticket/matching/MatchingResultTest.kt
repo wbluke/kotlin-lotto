@@ -1,5 +1,6 @@
 package lotto.domain.ticket.matching
 
+import lotto.domain.money.PurchaseMoney
 import lotto.domain.ticket.LottoTicket
 import lotto.domain.ticket.LottoTickets
 import lotto.domain.ticket.number.LottoNumber
@@ -7,6 +8,8 @@ import lotto.domain.ticket.winning.WinningLotto
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
+
+//import Kotlin.Test.assertEquals
 
 internal class MatchingResultTest {
 
@@ -50,6 +53,35 @@ internal class MatchingResultTest {
         assertEquals(matchingResult.getCountOf(LottoRank.FOURTH), 1)
         assertEquals(matchingResult.getCountOf(LottoRank.FIFTH), 1)
         assertEquals(matchingResult.getCountOf(LottoRank.NONE), 1)
+    }
+
+    @DisplayName("구입금액과 당첨결과로 수익률을 계산한다.")
+    @Test
+    fun calculateYield() {
+        // given
+        val number1 = LottoNumber.of(1)
+        val number2 = LottoNumber.of(2)
+        val number3 = LottoNumber.of(3)
+        val number4 = LottoNumber.of(4)
+        val number5 = LottoNumber.of(5)
+        val number6 = LottoNumber.of(6)
+
+        val bonusBall = LottoNumber.of(45)
+
+        val winningLottoTicket = LottoTicket(listOf(number1, number2, number3, number4, number5, number6))
+        val winningLotto = WinningLotto(winningLottoTicket, bonusBall)
+
+        val firstTicket = LottoTicket(listOf(number1, number2, number3, number4, number5, number6))
+        val secondTicket = LottoTicket(listOf(number2, number3, number4, number5, number6, bonusBall))
+        val lottoTickets = LottoTickets(listOf(firstTicket, secondTicket))
+
+        val matchingResult = MatchingResult.of(winningLotto, lottoTickets)
+
+        // when
+        val lottoYield = matchingResult.calculateYield(PurchaseMoney(2000L))
+
+        // then
+        assertEquals(lottoYield, 1015000.00)
     }
 
 }

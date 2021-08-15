@@ -1,7 +1,7 @@
 package lotto.domain.money
 
 data class PurchaseMoney(
-    private val money: Long
+    val money: Long
 ) {
 
     companion object {

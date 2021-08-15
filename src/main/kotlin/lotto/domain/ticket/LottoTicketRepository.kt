@@ -1,6 +1,4 @@
-package lotto.repository
-
-import lotto.domain.ticket.LottoTicket
+package lotto.domain.ticket
 
 interface LottoTicketRepository {
 

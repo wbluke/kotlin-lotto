@@ -1,6 +1,7 @@
 package lotto.repository
 
 import lotto.domain.ticket.LottoTicket
+import lotto.domain.ticket.LottoTicketRepository
 
 class LottoTicketMemoryRepository : LottoTicketRepository {
 

@@ -34,6 +34,7 @@ class ConsoleOutputView : OutputView {
         for (resultPair in lottoMatchingResultResponseDto.getResultPairs()) {
             println("${getMatchingMessage(resultPair.first)} - ${resultPair.second}개")
         }
+        println("총 수익률은 ${lottoMatchingResultResponseDto.getLottoYield()}입니다.")
     }
 
     private fun getMatchingMessage(lottoRank: LottoRank): String {

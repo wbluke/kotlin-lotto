@@ -2,10 +2,11 @@ package lotto.service.dto
 
 import lotto.domain.ticket.matching.LottoRank
 import lotto.domain.ticket.matching.MatchingResult
+import lotto.utils.format
 import java.util.*
 import java.util.stream.Collectors
 
-class LottoMatchingResultResponseDto(matchingResult: MatchingResult) {
+class LottoMatchingResultResponseDto(matchingResult: MatchingResult, private val lottoYield: Double) {
 
     private val result: MutableMap<LottoRank, Int> = EnumMap(LottoRank::class.java)
 
@@ -20,6 +21,10 @@ class LottoMatchingResultResponseDto(matchingResult: MatchingResult) {
             .filter { it.isNotNone() }
             .map { Pair(it!!, result[it]!!) }
             .collect(Collectors.toList())
+    }
+
+    fun getLottoYield(): String {
+        return lottoYield.format(2)
     }
 
 }

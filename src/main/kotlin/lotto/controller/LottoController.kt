@@ -1,6 +1,7 @@
 package lotto.controller
 
 import lotto.repository.LottoTicketMemoryRepository
+import lotto.repository.PurchaseMoneyMemoryRepository
 import lotto.service.LottoService
 import lotto.service.dto.LottoTicketsResponseDto
 import lotto.view.InputView
@@ -11,7 +12,10 @@ class LottoController(
     private val outputView: OutputView
 ) {
 
-    private val lottoService: LottoService = LottoService(LottoTicketMemoryRepository())
+    private val lottoService: LottoService = LottoService(
+        PurchaseMoneyMemoryRepository(),
+        LottoTicketMemoryRepository()
+    )
 
     fun run() {
         val money = inputView.inputMoneyToPurchaseLotto()

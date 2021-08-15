@@ -22,16 +22,16 @@ enum class LottoRank(val matchingCount: Int, val prize: Long) {
 
     }
 
+    fun multiplyPrizeBy(count: Int): Long {
+        return prize * count
+    }
+
     fun isSecond(): Boolean {
         return this == SECOND
     }
 
-    fun isNone(): Boolean {
-        return this == NONE
-    }
-
     fun isNotNone(): Boolean {
-        return !isNone()
+        return this != NONE
     }
 
 }

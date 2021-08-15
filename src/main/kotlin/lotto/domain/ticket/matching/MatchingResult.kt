@@ -1,5 +1,6 @@
 package lotto.domain.ticket.matching
 
+import lotto.domain.money.PurchaseMoney
 import lotto.domain.ticket.LottoTickets
 import lotto.domain.ticket.winning.WinningLotto
 import java.util.*
@@ -28,6 +29,14 @@ class MatchingResult private constructor() {
 
     fun getCountOf(lottoRank: LottoRank): Int {
         return result[lottoRank] ?: return 0
+    }
+
+    fun calculateYield(purchaseMoney: PurchaseMoney): Double {
+        val totalPrize = result.entries.stream()
+            .mapToLong { it.key.multiplyPrizeBy(it.value) }
+            .sum()
+
+        return totalPrize.toDouble() / purchaseMoney.money
     }
 
     private fun plusCountBy(lottoRank: LottoRank) {
